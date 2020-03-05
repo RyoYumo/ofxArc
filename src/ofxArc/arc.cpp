@@ -38,10 +38,7 @@ Renderer::Renderer(){
         uniform float u_thickness;
         uniform vec4  globalColor;
         void main(){
-            //float theta    = fract(atan(v_position.x, v_position.y) / PI2 + 0.5);
             float theta      = 360 * (1.0 - fract(atan(v_position.x, v_position.y) / PI2 + 0.5));
-            float from = 0.0;
-            float to   = 30.0;
             float r = step(u_radius-u_thickness, length(v_position));
             float d = step(u_angle.x, theta) - step(u_angle.y, theta);
             output_color     = vec4(globalColor.rgb, r * d);
